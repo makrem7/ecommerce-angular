@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
   private baseUrl = "http://localhost:8080/api/products";
 
   constructor(private httpClient: HttpClient) { }
