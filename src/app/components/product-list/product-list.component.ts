@@ -7,7 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe,RouterModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
