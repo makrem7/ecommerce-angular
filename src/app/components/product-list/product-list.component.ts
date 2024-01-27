@@ -3,18 +3,26 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CurrencyPipe,RouterModule],
+  imports: [CurrencyPipe,RouterModule,NgbModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
   products:Product[] = [];
   currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
   searchMode : boolean = false;
+
+  // new properties  for pagination
+  thePageNumber: number = 1;
+  thePageSize: number = 5;
+  theTotalElements: number = 0;
+  pageSizes: number[] = [5,10,25,50];
 
   constructor( 
     private productService:ProductService ,
@@ -38,9 +46,12 @@ export class ProductListComponent {
   }
   handleSearchproducts() {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
-    this.productService.searchProducts(theKeyword).subscribe(
+    this.productService.searchProducts(theKeyword,this.thePageNumber-1,this.thePageSize).subscribe(
       data => {
-        this.products = data
+        this.products = data._embedded.products;
+        this.thePageNumber = data.page.number+1;
+        this.thePageSize = data.page.size;
+        this.theTotalElements = data.page.totalElements; 
       }
     );
   }
@@ -52,11 +63,25 @@ export class ProductListComponent {
     else{
       this.currentCategoryId = 1;
     }
-    this.productService.getProductlist(this.currentCategoryId).subscribe(
+
+    if(this.previousCategoryId != this.currentCategoryId){
+      this.thePageNumber = 1;
+    }
+    this.previousCategoryId=this.currentCategoryId;
+
+    this.productService.getProductlistPaginated(this.thePageNumber-1,this.thePageSize,this.currentCategoryId).subscribe(
       data => {
-        this.products=data;
+        this.products = data._embedded.products;
+        this.thePageNumber = data.page.number+1;
+        this.thePageSize = data.page.size;
+        this.theTotalElements = data.page.totalElements; 
       }
     )
   }
+  
+updatePageSize(pageSelectedPage: string) {
+  this.thePageSize = +pageSelectedPage;
+  this.listProducts();
+}
 
 }

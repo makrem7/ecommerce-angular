@@ -20,16 +20,22 @@ export class ProductService {
     return this.httpClient.get<Product>(productUrl);
   }
 
+  getProductlistPaginated(thePage:number, thePageSize: number, gategoryId: number): Observable<GetResponseProduct> {
+    const searchUrl: string = `${this.baseUrl}/search/findByCategoryId?id=${gategoryId}`
+                              +`&page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseProduct>(searchUrl);
+  }
   getProductlist(gategoryId: number): Observable<Product[]> {
     const searchUrl: string = `${this.baseUrl}/search/findByCategoryId?id=${gategoryId}`;
 
     return this.getProducts(searchUrl);
   }
 
-  searchProducts(theKeyword: string): Observable<Product[]> {
-    const searchUrl: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
+  searchProducts(theKeyword: string, thePage: number, thePageSize :number): Observable<GetResponseProduct> {
+    const searchUrl: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}?page=${thePage}&size=${thePageSize}`;
 
-    return this.getProducts(searchUrl);
+    return this.httpClient.get<GetResponseProduct>(searchUrl);
   }
   getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProduct>(searchUrl).pipe(
@@ -52,11 +58,17 @@ export class ProductService {
 interface GetResponseProduct {
   _embedded: {
     products: Product[];
-  };
+  },
+  page: {
+    size: number,
+    totalElements: number,
+    totalPage: number,
+    number: number,
+  }
 }
 
 interface GetResponseProductCategory {
   _embedded: {
     productCategory: ProductCategory[];
-  };
+  }
 }
