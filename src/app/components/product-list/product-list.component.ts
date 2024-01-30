@@ -22,9 +22,9 @@ export class ProductListComponent {
 
   // new properties  for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 5;
+  thePageSize: number = 4;
   theTotalElements: number = 0;
-  pageSizes: number[] = [5,10,25,50];
+  pageSizes: number[] = [4,8,12,16,24,32,40];
 
   constructor( 
     private productService:ProductService ,
@@ -82,16 +82,16 @@ export class ProductListComponent {
     )
   }
   
-updatePageSize(pageSelectedPage: string) {
-  this.thePageSize = +pageSelectedPage;
-  this.listProducts();
-}
+  updatePageSize(pageSelectedPage: string) {
+    this.thePageSize = +pageSelectedPage;
+    this.listProducts();
+  }
 
 
-addToCart(product: Product) {
-  console.log(product.name, " ", product.unitPrice);
-  const cartItem = new CartItem(product);
+  addToCart(product: Product) {
+    console.log(product.name, " ", product.unitPrice);
+    const cartItem = new CartItem(product);
 
-  this.cartService.addToCart(cartItem);
-}
+    this.cartService.addToCart(cartItem);
+  }
 }

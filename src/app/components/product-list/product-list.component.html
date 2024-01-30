@@ -9,7 +9,7 @@
                                 <img [src]="product.imageUrl" [alt]="product.name" class="img-fluid">
                                 <h1>{{ product.name }}</h1>
                             </a>
-                            <div class="price">{{ product.unitPrice | currency }}</div>
+                            <div class="price">{{ product.unitPrice |  currency:"EUR" }}</div>
                             <button (click)="addToCart(product)" class="btn btn-primary btn-sm">Add to cart</button>
                         </div>
                     </div>
@@ -21,23 +21,22 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%;">
-                                <ngb-pagination [(page)]="thePageNumber"
-                                                [pageSize]="thePageSize"
-                                                [collectionSize]="theTotalElements"
-                                                [maxSize]="3"
-                                                [boundaryLinks]="true"
-                                                (pageChange)="listProducts()">
-                                    
-                                </ngb-pagination>
-                            </div>
-                            <div class="col-md-3 " style="text-align: right;">
+                            <div class="col-md-2 " >
                                 <select #myPageSelect (change)="updatePageSize(myPageSelect.value)" class="form-select" aria-label=".form-select-sm example" >
                                     @for (pageSize of pageSizes; track $index) {
                                         <option >{{pageSize}}</option>
                                     }
                                 </select>
                             
+                            </div>
+                            <div class="col-md-9">
+                                <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                [maxSize]="3"
+                                                (pageChange)="listProducts()">
+                                    
+                                </ngb-pagination>
                             </div>
                         </div>
                     </div>

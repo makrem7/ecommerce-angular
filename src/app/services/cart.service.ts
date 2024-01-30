@@ -29,7 +29,7 @@ export class CartService {
     return this.cartItems.find(item => item.id === itemId);
   }
 
-  private computeCartTotals() {
+   computeCartTotals() {
     // Implement your logic to calculate total price and quantity
     let totalPrice = 0;
     let totalQuantity = 0;
