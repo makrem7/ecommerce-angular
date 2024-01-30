@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class SearchComponent {
   constructor (private router :Router){}
 onSearchClick(keyword: string) {
-  console.log(keyword);
   this.router.navigateByUrl(`/search/${keyword}`);
 }
 

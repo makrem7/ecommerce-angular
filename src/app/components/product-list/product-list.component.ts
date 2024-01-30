@@ -4,6 +4,8 @@ import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartItem } from '../../common/cart-item';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -26,6 +28,7 @@ export class ProductListComponent {
 
   constructor( 
     private productService:ProductService ,
+    private cartService:CartService ,
     private route: ActivatedRoute
     ){}
 
@@ -84,4 +87,11 @@ updatePageSize(pageSelectedPage: string) {
   this.listProducts();
 }
 
+
+addToCart(product: Product) {
+  console.log(product.name, " ", product.unitPrice);
+  const cartItem = new CartItem(product);
+
+  this.cartService.addToCart(cartItem);
+}
 }

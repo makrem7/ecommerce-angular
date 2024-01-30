@@ -33,7 +33,7 @@ export class ProductService {
   }
 
   searchProducts(theKeyword: string, thePage: number, thePageSize :number): Observable<GetResponseProduct> {
-    const searchUrl: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}?page=${thePage}&size=${thePageSize}`;
+    const searchUrl: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}&page=${thePage}&size=${thePageSize}`;
 
     return this.httpClient.get<GetResponseProduct>(searchUrl);
   }
