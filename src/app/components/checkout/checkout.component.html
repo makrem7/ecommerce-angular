@@ -1,0 +1,207 @@
+<div class="main-content page-m">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+        <!-- Customer Information Section -->
+        <div formGroupName="customer" class="form-area">
+          <h3>Customer</h3>
+
+          <!-- First Name -->
+          <div class="row">
+            <div class="col-md-2"><label for="firstName">First Name:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="firstName"></div>
+            </div>
+          </div>
+
+          <!-- Last Name -->
+          <div class="row">
+            <div class="col-md-2"><label for="lastName">Last Name:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="lastName"></div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="row">
+            <div class="col-md-2"><label for="email">Email:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="email"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Address Section -->
+        <div formGroupName="shippingAddress" class="form-area">
+          <h3>Shipping Address</h3>
+
+          <!-- Country -->
+          <div class="row">
+            <div class="col-md-2"><label for="country">Country:</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="country">
+                  <option>To Do</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Street -->
+          <div class="row">
+            <div class="col-md-2"><label for="street">Street:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="street"></div>
+            </div>
+          </div>
+
+          <!-- City -->
+          <div class="row">
+            <div class="col-md-2"><label for="city">City:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="city"></div>
+            </div>
+          </div>
+
+          <!-- State -->
+          <div class="row">
+            <div class="col-md-2"><label for="state">State:</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="state">
+                  <option>To Do</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zip Code -->
+          <div class="row">
+            <div class="col-md-2"><label for="zipCode">Zip Code:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="zipCode"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Billing Address Section -->
+        <div formGroupName="billingAddress" class="form-area">
+          <h3>Billing Address</h3>
+
+          <!-- Country -->
+          <div class="row">
+            <div class="col-md-2"><label for="country">Country:</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="country">
+                  <option>To Do</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Street -->
+          <div class="row">
+            <div class="col-md-2"><label for="street">Street:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="street"></div>
+            </div>
+          </div>
+
+          <!-- City -->
+          <div class="row">
+            <div class="col-md-2"><label for="city">City:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="city"></div>
+            </div>
+          </div>
+
+          <!-- State -->
+          <div class="row">
+            <div class="col-md-2"><label for="state">State:</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="state">
+                  <option>To Do</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zip Code -->
+          <div class="row">
+            <div class="col-md-2"><label for="zipCode">Zip Code:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="zipCode"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit Card Information Section -->
+        <div formGroupName="creditCard" class="form-area">
+          <h3>Credit Card Information</h3>
+
+          <!-- Card Type -->
+          <div class="row">
+            <div class="col-md-2"><label for="cardType">Card Type:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="cardType"></div>
+            </div>
+          </div>
+
+          <!-- Cardholder Name -->
+          <div class="row">
+            <div class="col-md-2"><label for="name">Cardholder Name:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="name"></div>
+            </div>
+          </div>
+
+          <!-- Card Number -->
+          <div class="row">
+            <div class="col-md-2"><label for="cardNumber">Card Number:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="cardNumber"></div>
+            </div>
+          </div>
+
+          <!-- Security Code -->
+          <div class="row">
+            <div class="col-md-2"><label for="securityCode">Security Code:</label></div>
+            <div class="col-md-9">
+              <div class="input-space"><input type="text" formControlName="securityCode"></div>
+            </div>
+          </div>
+
+          <!-- Expiration Month and Year -->
+          <div class="row">
+            <div class="col-md-2"><label for="expirationMonth">Expiration Month:</label></div>
+            <div class="col-md-3">
+              <div class="input-space"><input type="text" formControlName="expirationMonth"></div>
+            </div>
+            <div class="col-md-2"><label for="expirationYear">Expiration Year:</label></div>
+            <div class="col-md-3">
+              <div class="input-space"><input type="text" formControlName="expirationYear"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order details -->
+        <div class="form-area">
+          <h3>Review your order</h3>
+          <p>Total Quantity: {{totalQuantity}}</p>
+          <p>Shipping: FREE </p>
+          <p>Total Price: {{totalPrice}}</p>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-info">Purchase</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

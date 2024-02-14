@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CartItem } from '../../common/cart-item';
 import { CartService } from '../../services/cart.service';
 import { CurrencyPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe,RouterModule],
   templateUrl: './cart-details.component.html',
   styleUrl: './cart-details.component.css'
 })
@@ -38,8 +39,6 @@ export class CartDetailsComponent {
 
     if (existingCartItem && existingCartItem.quantity > 1) {
       existingCartItem.quantity--;
-    } else {
-      this.removeCartItem(cartItem.id);
     }
 
     this.cartService.computeCartTotals();
